@@ -1,0 +1,35 @@
+graph TD;
+    subgraph MotorTrafficDepartment
+        MTDept["Motor Traffic Department"]
+    end
+
+    subgraph Person
+        Person["Person"]
+    end
+
+    subgraph DrivingLicense
+        DL["Driving License"]
+    end
+
+    subgraph VehicleClass
+        VC["Vehicle Class"]
+    end
+
+    Person -->|applies for| DL
+    MTDept -->|issues| DL
+    DL -->|belongs to| Person
+    DL -->|has Type of work| TypeOfWork
+    DL -->|can be renewed after| ValidityPeriod
+    DL -->|can request Duplicate if| LostOrDamaged
+    DL -->|can upgrade to| UpgradedClass
+    VC -->|includes| VehicleClass
+
+    TypeOfWork -->|new| DL
+    TypeOfWork -->|duplicate| DL
+    TypeOfWork -->|renew| DL
+    TypeOfWork -->|upgrade| DL
+    LostOrDamaged -->|with police report| DL
+    UpgradedClass -->|requires| MedicalCertificate
+    UpgradedClass -->|requires| WrittenTestResult
+    UpgradedClass -->|requires| PracticalTestResult
+    RenewalPeriod -->|is| 8 years
